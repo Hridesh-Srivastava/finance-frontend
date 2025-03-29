@@ -2,9 +2,10 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
+import { healthApi } from "../services/api"
 
 const Register = () => {
   const [name, setName] = useState("")
@@ -13,13 +14,31 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const [serverStatus, setServerStatus] = useState<"checking" | "online" | "offline">("checking")
 
   const { register } = useAuth()
   const navigate = useNavigate()
 
+  // Check server status on component mount
+  useEffect(() => {
+    const checkServerStatus = async () => {
+      try {
+        await healthApi.checkServer()
+        setServerStatus("online")
+      } catch (err) {
+        console.error("Server health check failed:", err)
+        setServerStatus("offline")
+      }
+    }
+
+    checkServerStatus()
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError("")
 
+    // Form validation
     if (!name || !email || !password || !confirmPassword) {
       setError("Please fill in all fields")
       return
@@ -30,13 +49,35 @@ const Register = () => {
       return
     }
 
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters")
+      return
+    }
+
+    // Check server status before attempting registration
+    if (serverStatus === "offline") {
+      setError("Server is currently unavailable. Please try again later.")
+      return
+    }
+
     try {
       setLoading(true)
-      setError("")
+
+      // Log registration attempt for debugging
+      console.log("Attempting to register user:", { name, email })
+
       await register(name, email, password)
-      navigate("/")
+      navigate("/app")
     } catch (err: any) {
-      setError(err.message || "Failed to register")
+      console.error("Registration error:", err)
+
+      if (err.response?.data?.message) {
+        setError(err.response.data.message)
+      } else if (err.message.includes("Network")) {
+        setError("Unable to connect to the server. Please check your internet connection and try again.")
+      } else {
+        setError("Registration failed. Please try again later.")
+      }
     } finally {
       setLoading(false)
     }
@@ -59,6 +100,14 @@ const Register = () => {
           <h2 className="mt-6 text-center text-2xl font-bold text-gray-900 dark:text-white">Create your account</h2>
         </div>
 
+        {serverStatus === "offline" && (
+          <div className="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 p-4 rounded-md">
+            <p className="text-yellow-800 dark:text-yellow-200">
+              Server is currently offline. Registration may not work until the server is back online.
+            </p>
+          </div>
+        )}
+
         {error && (
           <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 p-4 rounded-md">
             <p className="text-red-800 dark:text-red-200">{error}</p>
@@ -68,7 +117,9 @@ const Register = () => {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label htmlFor="name" className="sr-only">Full name</label>
+              <label htmlFor="name" className="sr-only">
+                Full name
+              </label>
               <input
                 id="name"
                 name="name"
@@ -82,7 +133,9 @@ const Register = () => {
               />
             </div>
             <div>
-              <label htmlFor="email" className="sr-only">Email address</label>
+              <label htmlFor="email" className="sr-only">
+                Email address
+              </label>
               <input
                 id="email"
                 name="email"
@@ -96,7 +149,9 @@ const Register = () => {
               />
             </div>
             <div>
-              <label htmlFor="password" className="sr-only">Password</label>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
               <input
                 id="password"
                 name="password"
@@ -110,7 +165,9 @@ const Register = () => {
               />
             </div>
             <div>
-              <label htmlFor="confirmPassword" className="sr-only">Confirm password</label>
+              <label htmlFor="confirmPassword" className="sr-only">
+                Confirm password
+              </label>
               <input
                 id="confirmPassword"
                 name="confirmPassword"
@@ -128,7 +185,7 @@ const Register = () => {
           <div>
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || serverStatus === "offline"}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Creating account..." : "Sign up"}
@@ -150,3 +207,4 @@ const Register = () => {
 }
 
 export default Register
+

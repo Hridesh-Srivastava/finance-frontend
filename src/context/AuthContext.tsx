@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [retryCount, setRetryCount] = useState(0)
 
   useEffect(() => {
     const token = localStorage.getItem("token")
@@ -46,12 +47,37 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const { data } = await authApi.getMe()
       setUser(data)
       setError(null)
-    } catch (err) {
+      // Reset retry count on success
+      setRetryCount(0)
+    } catch (err: any) {
       console.error("Failed to fetch user:", err)
-      localStorage.removeItem("token")
-      setError("Session expired. Please login again.")
+
+      // If we've already retried 3 times, give up
+      if (retryCount >= 3) {
+        localStorage.removeItem("token")
+        setError("Session expired. Please login again.")
+        setLoading(false)
+        return
+      }
+
+      // If it's a network error, retry after a delay
+      if (err.message.includes("Network") || err.code === "ERR_NETWORK") {
+        console.log(`Retrying fetch user (attempt ${retryCount + 1})...`)
+        setRetryCount((prev) => prev + 1)
+
+        // Retry after 2 seconds
+        setTimeout(() => {
+          fetchUser()
+        }, 2000)
+      } else {
+        localStorage.removeItem("token")
+        setError("Session expired. Please login again.")
+        setLoading(false)
+      }
     } finally {
-      setLoading(false)
+      if (retryCount === 0) {
+        setLoading(false)
+      }
     }
   }
 
@@ -62,6 +88,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       localStorage.setItem("token", data.token)
       await fetchUser()
     } catch (err: any) {
+      console.error("Login error:", err)
       const message = err.response?.data?.message || "Failed to login"
       setError(message)
       throw new Error(message)
@@ -73,11 +100,30 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const register = async (name: string, email: string, password: string) => {
     try {
       setLoading(true)
-      const { data } = await authApi.register({ name, email, password })
+
+      // Log registration attempt
+      console.log("Registering user:", { name, email })
+
+      // Use direct fetch for debugging
+      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.message || `Server responded with status: ${response.status}`)
+      }
+
+      const data = await response.json()
       localStorage.setItem("token", data.token)
       await fetchUser()
     } catch (err: any) {
-      const message = err.response?.data?.message || "Failed to register"
+      console.error("Registration error:", err)
+      const message = err.message || "Failed to register"
       setError(message)
       throw new Error(message)
     } finally {
