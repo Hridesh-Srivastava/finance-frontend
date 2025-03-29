@@ -278,11 +278,11 @@ const AboutUs = () => {
                 Our Story
               </span>
               <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-                About FinTrack
+                About Blink-Bank
               </span>
             </h1>
             <p className="mt-8 text-xl text-gray-500 dark:text-gray-400 leading-8">
-              FinTrack was founded in 2023 with a simple mission: to make personal finance management accessible,
+              Blink-Bank was founded in 2023 with a simple mission: to make personal finance management accessible,
               visual, and intelligent for everyone.
             </p>
           </div>
@@ -295,18 +295,18 @@ const AboutUs = () => {
             <p>
               They set out to create a solution that would not only track expenses but also help users understand their
               financial patterns and make better decisions. By combining beautiful data visualizations with artificial
-              intelligence, FinTrack was born.
+              intelligence, Blink-Bank was born.
             </p>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-12">Our Mission</h2>
             <p>
-              At FinTrack, we believe that financial literacy and control should be accessible to everyone. Our mission
+              At Blink-Bank, we believe that financial literacy and control should be accessible to everyone. Our mission
               is to empower individuals to take control of their financial lives through intuitive tools and intelligent
               insights.
             </p>
             <p>
               We're committed to continuous innovation, always looking for new ways to help our users understand and
               improve their financial health. Whether you're saving for a big purchase, trying to reduce debt, or simply
-              want to be more mindful of your spending, FinTrack is designed to support your journey.
+              want to be more mindful of your spending, Blink-Bank is designed to support your journey.
             </p>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-12">Our Values</h2>
             <ul>
@@ -495,7 +495,7 @@ const AboutUs = () => {
           </div>
           <div className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
             <p className="text-base text-gray-400 dark:text-gray-500 text-center">
-              &copy; {new Date().getFullYear()} FinTrack, Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Blink-Bank, Inc. All rights reserved.
             </p>
           </div>
         </div>

@@ -202,7 +202,7 @@ const PrivacyPolicy = () => {
           <div className="mt-6 prose prose-indigo dark:prose-invert prose-lg text-gray-500 dark:text-gray-400 mx-auto">
             <h2>1. Introduction</h2>
             <p>
-              Welcome to FinTrack ("we," "our," or "us"). We are committed to protecting your privacy and personal
+              Welcome to Blink-Bank ("we," "our," or "us"). We are committed to protecting your privacy and personal
               information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information
               when you use our financial tracking service.
             </p>
@@ -291,7 +291,7 @@ const PrivacyPolicy = () => {
             <p>
               If you have any questions about this Privacy Policy, please contact us at:
               <br />
-              Email: privacy@fintrack.com
+              Email: privacy@Blink-Bank.com
               <br />
               Address: 123 Finance Street, Suite 100, San Francisco, CA 94107
             </p>
@@ -398,7 +398,7 @@ const PrivacyPolicy = () => {
           </div>
           <div className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
             <p className="text-base text-gray-400 dark:text-gray-500 text-center">
-              &copy; {new Date().getFullYear()} FinTrack, Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Blink-Bank, Inc. All rights reserved.
             </p>
           </div>
         </div>

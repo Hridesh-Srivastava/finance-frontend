@@ -259,7 +259,7 @@ const ContactUs = () => {
                     <EnvelopeIcon className="h-6 w-6 text-primary-600 dark:text-primary-400" />
                   </div>
                   <div className="ml-3 text-base text-gray-500 dark:text-gray-400">
-                    <p>support@fintrack.com</p>
+                    <p>support@Blink-Bank.com</p>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -397,9 +397,9 @@ const ContactUs = () => {
           <div className="mt-12">
             <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12 lg:grid-cols-3">
               <div>
-                <dt className="text-lg leading-6 font-medium text-gray-900 dark:text-white">What is FinTrack?</dt>
+                <dt className="text-lg leading-6 font-medium text-gray-900 dark:text-white">What is Blink-Bank?</dt>
                 <dd className="mt-2 text-base text-gray-500 dark:text-gray-400">
-                  FinTrack is a personal finance management application that helps you track expenses, visualize
+                  Blink-Bank is a personal finance management application that helps you track expenses, visualize
                   spending patterns, and get AI-powered insights to improve your financial health.
                 </dd>
               </div>
@@ -424,15 +424,15 @@ const ContactUs = () => {
               <div>
                 <dt className="text-lg leading-6 font-medium text-gray-900 dark:text-white">Is there a mobile app?</dt>
                 <dd className="mt-2 text-base text-gray-500 dark:text-gray-400">
-                  Yes, FinTrack is available on iOS and Android devices, allowing you to track your finances on the go.
+                  Yes, Blink-Bank is available on iOS and Android devices, allowing you to track your finances on the go.
                 </dd>
               </div>
               <div>
                 <dt className="text-lg leading-6 font-medium text-gray-900 dark:text-white">
-                  How much does FinTrack cost?
+                  How much does Blink-Bank cost?
                 </dt>
                 <dd className="mt-2 text-base text-gray-500 dark:text-gray-400">
-                  FinTrack offers a free basic plan with core features. Premium plans with advanced features start at
+                  Blink-Bank offers a free basic plan with core features. Premium plans with advanced features start at
                   $5.99/month.
                 </dd>
               </div>
@@ -547,7 +547,7 @@ const ContactUs = () => {
           </div>
           <div className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
             <p className="text-base text-gray-400 dark:text-gray-500 text-center">
-              &copy; {new Date().getFullYear()} FinTrack, Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Blink-Bank, Inc. All rights reserved.
             </p>
           </div>
         </div>

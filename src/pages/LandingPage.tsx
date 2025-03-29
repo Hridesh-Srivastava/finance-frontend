@@ -70,13 +70,13 @@ const LandingPage = () => {
   const testimonials = [
     {
       content:
-        "FinTrack has completely transformed how I manage my finances. The visual analytics make it so easy to understand where my money is going.",
+        "Blink-Bank has completely transformed how I manage my finances. The visual analytics make it so easy to understand where my money is going.",
       author: "Sarah Johnson",
       role: "Marketing Manager",
     },
     {
       content:
-        "I've tried many finance apps, but FinTrack stands out with its AI insights. It's like having a financial advisor in my pocket!",
+        "I've tried many finance apps, but Blink-Bank stands out with its AI insights. It's like having a financial advisor in my pocket!",
       author: "Michael Chen",
       role: "Software Engineer",
     },
@@ -313,7 +313,7 @@ const LandingPage = () => {
                 </span>
               </h1>
               <p className="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                FinTrack helps you track your expenses, visualize your spending patterns, and make smarter financial
+                Blink-Bank helps you track your expenses, visualize your spending patterns, and make smarter financial
                 decisions with AI-powered insights.
               </p>
               <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
@@ -425,7 +425,7 @@ const LandingPage = () => {
               Loved by thousands of users
             </p>
             <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500 dark:text-gray-400">
-              Don't just take our word for it — hear what our users have to say about FinTrack.
+              Don't just take our word for it — hear what our users have to say about Blink-Bank.
             </p>
           </div>
 
@@ -688,7 +688,7 @@ const LandingPage = () => {
           </div>
           <div className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
             <p className="text-base text-gray-400 dark:text-gray-500 text-center">
-              &copy; {new Date().getFullYear()} FinTrack, Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Blink-Bank, Inc. All rights reserved.
             </p>
           </div>
         </div>

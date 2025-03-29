@@ -202,14 +202,14 @@ const TermsOfService = () => {
           <div className="mt-6 prose prose-indigo dark:prose-invert prose-lg text-gray-500 dark:text-gray-400 mx-auto">
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing or using the FinTrack service, website, and any other linked pages or services offered by
-              FinTrack (collectively, the "Service"), you agree to be bound by these Terms of Service ("Terms"). If you
+              By accessing or using the Blink-Bank service, website, and any other linked pages or services offered by
+              Blink-Bank (collectively, the "Service"), you agree to be bound by these Terms of Service ("Terms"). If you
               do not agree to these Terms, please do not use the Service.
             </p>
 
             <h2>2. Description of Service</h2>
             <p>
-              FinTrack provides a personal finance management platform that allows users to track expenses, visualize
+              Blink-Bank provides a personal finance management platform that allows users to track expenses, visualize
               spending patterns, and receive financial insights. The Service may include features such as transaction
               tracking, budget planning, financial analytics, and AI-powered recommendations.
             </p>
@@ -222,7 +222,7 @@ const TermsOfService = () => {
             </p>
             <p>
               You are responsible for safeguarding your password and for all activities that occur under your account.
-              You agree to notify FinTrack immediately of any unauthorized use of your account or any other breach of
+              You agree to notify Blink-Bank immediately of any unauthorized use of your account or any other breach of
               security.
             </p>
 
@@ -233,7 +233,7 @@ const TermsOfService = () => {
               for your User Content.
             </p>
             <p>
-              By providing User Content to the Service, you grant FinTrack a worldwide, non-exclusive, royalty-free
+              By providing User Content to the Service, you grant Blink-Bank a worldwide, non-exclusive, royalty-free
               license to use, process, and analyze your User Content solely for the purpose of providing and improving
               the Service.
             </p>
@@ -262,7 +262,7 @@ const TermsOfService = () => {
 
             <h2>6. Intellectual Property Rights</h2>
             <p>
-              The Service and its original content, features, and functionality are owned by FinTrack and are protected
+              The Service and its original content, features, and functionality are owned by Blink-Bank and are protected
               by international copyright, trademark, patent, trade secret, and other intellectual property or
               proprietary rights laws.
             </p>
@@ -270,7 +270,7 @@ const TermsOfService = () => {
             <h2>7. Subscription and Payments</h2>
             <p>
               Some aspects of the Service may be provided for a fee. You agree to pay all fees associated with your
-              chosen subscription plan. FinTrack may modify the fees for any subscription service upon notice to you.
+              chosen subscription plan. Blink-Bank may modify the fees for any subscription service upon notice to you.
             </p>
             <p>
               All payments are non-refundable except as expressly set forth in these Terms or as required by applicable
@@ -279,7 +279,7 @@ const TermsOfService = () => {
 
             <h2>8. Termination</h2>
             <p>
-              FinTrack may terminate or suspend your account and access to the Service immediately, without prior notice
+              Blink-Bank may terminate or suspend your account and access to the Service immediately, without prior notice
               or liability, for any reason, including if you breach these Terms.
             </p>
             <p>
@@ -289,18 +289,18 @@ const TermsOfService = () => {
 
             <h2>9. Disclaimer of Warranties</h2>
             <p>
-              THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. FINTRACK EXPRESSLY DISCLAIMS ALL
+              THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. Blink-Bank EXPRESSLY DISCLAIMS ALL
               WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
               MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
             </p>
             <p>
-              FINTRACK MAKES NO WARRANTY THAT THE SERVICE WILL MEET YOUR REQUIREMENTS, BE AVAILABLE ON AN UNINTERRUPTED,
+              Blink-Bank MAKES NO WARRANTY THAT THE SERVICE WILL MEET YOUR REQUIREMENTS, BE AVAILABLE ON AN UNINTERRUPTED,
               SECURE, OR ERROR-FREE BASIS, OR BE ACCURATE, RELIABLE, COMPLETE, LEGAL, OR SAFE.
             </p>
 
             <h2>10. Limitation of Liability</h2>
             <p>
-              TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL FINTRACK BE LIABLE FOR ANY INDIRECT,
+              TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL Blink-Bank BE LIABLE FOR ANY INDIRECT,
               PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER INCLUDING, WITHOUT
               LIMITATION, DAMAGES FOR LOSS OF USE, DATA, OR PROFITS, ARISING OUT OF OR IN ANY WAY CONNECTED WITH THE USE
               OR PERFORMANCE OF THE SERVICE.
@@ -308,9 +308,9 @@ const TermsOfService = () => {
 
             <h2>11. Changes to Terms</h2>
             <p>
-              FinTrack reserves the right to modify or replace these Terms at any time. If a revision is material,
-              FinTrack will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a
-              material change will be determined at FinTrack's sole discretion.
+              Blink-Bank reserves the right to modify or replace these Terms at any time. If a revision is material,
+              Blink-Bank will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a
+              material change will be determined at Blink-Bank's sole discretion.
             </p>
 
             <h2>12. Governing Law</h2>
@@ -323,7 +323,7 @@ const TermsOfService = () => {
             <p>
               If you have any questions about these Terms, please contact us at:
               <br />
-              Email: legal@fintrack.com
+              Email: legal@Blink-Bank.com
               <br />
               Address: 123 Finance Street, Suite 100, San Francisco, CA 94107
             </p>
@@ -431,7 +431,7 @@ const TermsOfService = () => {
           </div>
           <div className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
             <p className="text-base text-gray-400 dark:text-gray-500 text-center">
-              &copy; {new Date().getFullYear()} FinTrack, Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Blink-Bank, Inc. All rights reserved.
             </p>
           </div>
         </div>
