@@ -45,6 +45,15 @@ const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
       <div className="max-w-md w-full space-y-8">
+        <div className="text-left">
+          <button
+            onClick={() => navigate("/")}
+            className="mb-4 text-sm text-primary-600 hover:text-primary-500 dark:text-primary-400"
+          >
+            &larr; Back to Home
+          </button>
+        </div>
+
         <div>
           <h1 className="text-center text-3xl font-bold text-gray-900 dark:text-white">Finance Tracker</h1>
           <h2 className="mt-6 text-center text-2xl font-bold text-gray-900 dark:text-white">Create your account</h2>
@@ -59,9 +68,7 @@ const Register = () => {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label htmlFor="name" className="sr-only">
-                Full name
-              </label>
+              <label htmlFor="name" className="sr-only">Full name</label>
               <input
                 id="name"
                 name="name"
@@ -75,9 +82,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <label htmlFor="email" className="sr-only">
-                Email address
-              </label>
+              <label htmlFor="email" className="sr-only">Email address</label>
               <input
                 id="email"
                 name="email"
@@ -91,9 +96,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
+              <label htmlFor="password" className="sr-only">Password</label>
               <input
                 id="password"
                 name="password"
@@ -107,9 +110,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <label htmlFor="confirmPassword" className="sr-only">
-                Confirm password
-              </label>
+              <label htmlFor="confirmPassword" className="sr-only">Confirm password</label>
               <input
                 id="confirmPassword"
                 name="confirmPassword"
@@ -149,4 +150,3 @@ const Register = () => {
 }
 
 export default Register
-

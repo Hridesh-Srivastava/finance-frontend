@@ -73,6 +73,11 @@ const Login = () => {
         <div className="flex justify-center">
           <Logo className="h-12 w-auto" />
         </div>
+        <div className="mt-4 text-center">
+          <Link to="/" className="text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400">
+           &larr; Back to Home
+          </Link>
+        </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
           Sign in to your account
         </h2>
