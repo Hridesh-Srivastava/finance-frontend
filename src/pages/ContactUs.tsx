@@ -33,12 +33,23 @@ const ContactUs = () => {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setFormStatus("submitting")
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form")
+      }
+
       setFormStatus("success")
       setFormData({
         name: "",
@@ -51,7 +62,10 @@ const ContactUs = () => {
       setTimeout(() => {
         setFormStatus("idle")
       }, 3000)
-    }, 1000)
+    } catch (error) {
+      console.error("Error submitting contact form:", error)
+      setFormStatus("error")
+    }
   }
 
   return (
@@ -230,16 +244,16 @@ const ContactUs = () => {
       <div className="relative bg-white dark:bg-gray-900 py-16 sm:py-24">
         <div className="lg:absolute lg:inset-0">
           <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.8219681239984!2d78.16493377501617!3d30.190831911621057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390924dc8a731ca5%3A0x862f6f008f38d092!2sSwami%20Rama%20Himalayan%20University%20(SRHU)!5e1!3m2!1sen!2sin!4v1742756216226!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  title="SRHU Map"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.8219681239984!2d78.16493377501617!3d30.190831911621057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390924dc8a731ca5%3A0x862f6f008f38d092!2sSwami%20Rama%20Himalayan%20University%20(SRHU)!5e1!3m2!1sen!2sin!4v1742756216226!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              title="SRHU Map"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
         <div className="relative py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:py-32 lg:grid lg:grid-cols-2">
@@ -285,6 +299,22 @@ const ContactUs = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+                {formStatus === "error" && (
+                  <div className="sm:col-span-2 p-4 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-md">
+                    <p className="text-red-800 dark:text-red-200">
+                      There was an error sending your message. Please try again later.
+                    </p>
+                  </div>
+                )}
+
+                {formStatus === "success" && (
+                  <div className="sm:col-span-2 p-4 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-md">
+                    <p className="text-green-800 dark:text-green-200">
+                      Thank you for your message! We'll get back to you as soon as possible.
+                    </p>
+                  </div>
+                )}
+
                 <div className="sm:col-span-2">
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Name
@@ -366,22 +396,6 @@ const ContactUs = () => {
                     {formStatus === "submitting" ? "Sending..." : "Send Message"}
                   </button>
                 </div>
-
-                {formStatus === "success" && (
-                  <div className="sm:col-span-2 p-4 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-md">
-                    <p className="text-green-800 dark:text-green-200">
-                      Thank you for your message! We'll get back to you as soon as possible.
-                    </p>
-                  </div>
-                )}
-
-                {formStatus === "error" && (
-                  <div className="sm:col-span-2 p-4 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-md">
-                    <p className="text-red-800 dark:text-red-200">
-                      There was an error sending your message. Please try again later.
-                    </p>
-                  </div>
-                )}
               </form>
             </div>
           </div>
@@ -424,7 +438,8 @@ const ContactUs = () => {
               <div>
                 <dt className="text-lg leading-6 font-medium text-gray-900 dark:text-white">Is there a mobile app?</dt>
                 <dd className="mt-2 text-base text-gray-500 dark:text-gray-400">
-                  Yes, Blink-Bank is available on iOS and Android devices, allowing you to track your finances on the go.
+                  Yes, Blink-Bank is available on iOS and Android devices, allowing you to track your finances on the
+                  go.
                 </dd>
               </div>
               <div>
